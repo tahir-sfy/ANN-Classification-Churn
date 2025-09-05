@@ -81,13 +81,11 @@ if st.button('Predict'):
     # Scale input and predict
     # -----------------------
     scaled_input = scaler.transform(input_data)
-    prediction = model.predict(input_data.values)
+    prediction = model.predict(scaled_input)
     prediction_probability = prediction[0][0]
-    print(prediction_probability)
+
     st.write(f'Prediction probability: {prediction_probability:.2f}')
     if prediction_probability > 0.5:
         st.success('The customer is likely to leave the bank')
     else:
         st.info('The customer is likely to stay with the bank')
-
-
